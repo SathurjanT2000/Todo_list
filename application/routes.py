@@ -26,3 +26,10 @@ def complete_task(completed, id):
     task.completed = bool(completed)
     db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/delete/<int:id>')
+def delete_task(id):
+    task = Tasks.query.get(id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('index'))
