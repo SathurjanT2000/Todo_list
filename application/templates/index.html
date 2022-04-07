@@ -5,6 +5,11 @@
 {% for task in all_tasks %}
     Description: {{ task.description }} <br>
     Completed: {{ task.completed}} <br>
-    <i>{{ task.date_created }}</i><br><br>
+    <i>{{ task.date_created }}</i><br>
+    {% if task.completed == False %}
+        <a href="{{ url_for('complete_task', completed=1, id=task.id) }}">Complete</a><br>
+    {% elif task.completed == True %}
+        <a href="{{ url_for('complete_task', completed=0, id=task.id) }}">Uncomplete</a><br>
+    {% endif %}
 {% endfor %}
 {% endblock body %}
