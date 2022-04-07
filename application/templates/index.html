@@ -11,5 +11,6 @@
     {% elif task.completed == True %}
         <a href="{{ url_for('complete_task', completed=0, id=task.id) }}">Uncomplete</a><br>
     {% endif %}
+    <a href="{{ url_for('delete_task', id=task.id) }}">Delete</a><br><br>
 {% endfor %}
 {% endblock body %}
